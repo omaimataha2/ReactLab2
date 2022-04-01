@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import OurNav from './components/OurNav';
+import Slider from './components/FunctionComponent/Slider';
+import Counter from './components/FunctionComponent/Counter';
+import Login from './components/FunctionComponent/Login';
+import Footer from './components/FunctionComponent/Footer';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let [dataFromChild,setDataFromChild]=useState();
+  let [count,setCount]=useState();
+
+
+let onDataFromChildChanged=(data)=>{
+  setDataFromChild(data);
+};
+let onCountChanged=(data)=>{
+setCount(data);
+}
+    return ( < >
+        < OurNav /> 
+        <p className='m-3 p-3'>Your input : {dataFromChild}</p>
+        <Login onDataFromChildChanged={onDataFromChildChanged} />
+        < Slider count={count} />
+        <Counter onCountChanged={onCountChanged} />
+        
+      < Footer />
+
+        </>
+
+    );
 }
 
 export default App;
